@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade IQ — SMB Import/Export Intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar panel">
+      <div class="brand">
+        <h1>Trade <span>IQ</span></h1>
+        <small>Global Trade Intelligence for SMBs</small>
+      </div>
+      <div class="topbar-right">
+        <span class="dot"></span>
+        <span class="feed">LIVE FEEDS ACTIVE</span>
+        <span id="utc-clock"></span>
+      </div>
+    </header>
+
+    <section class="kpi-grid">
+      <article class="panel kpi"><h3>Active Deals</h3><p id="active-deals">0</p><small id="active-deals-meta"></small></article>
+      <article class="panel kpi"><h3>Total Exposure</h3><p id="total-exposure">$0</p><small id="exposure-meta"></small></article>
+      <article class="panel kpi"><h3>Avg Risk Score</h3><p id="avg-risk">0</p><small id="risk-meta"></small></article>
+      <article class="panel kpi"><h3>Shipments En Route</h3><p id="shipments">0</p><small id="shipment-meta"></small></article>
+      <article class="panel kpi"><h3>Margin Avg</h3><p id="avg-margin">0%</p><small id="margin-meta"></small></article>
+    </section>
+
+    <div class="content-grid">
+      <aside class="panel sidebar">
+        <h2>Navigation</h2>
+        <ul>
+          <li class="active">Dashboard</li>
+          <li>Active Deals</li>
+          <li>Shipment Tracker</li>
+          <li>Risk Analytics</li>
+          <li>FX Monitor</li>
+          <li>Reports</li>
+        </ul>
+
+        <h2>Filters</h2>
+        <label>Country
+          <select id="country-filter"><option value="all">All</option></select>
+        </label>
+        <label>Product
+          <select id="product-filter"><option value="all">All</option></select>
+        </label>
+        <label>Risk
+          <select id="risk-filter">
+            <option value="all">All</option>
+            <option value="low">Low (0–40)</option>
+            <option value="medium">Medium (41–70)</option>
+            <option value="high">High (71+)</option>
+          </select>
+        </label>
+      </aside>
+
+      <main class="panel main">
+        <div class="tabs">
+          <button class="tab active">Deal Table</button>
+          <button class="tab">Risk Analytics</button>
+          <button class="tab">Sales Forecast</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Deal ID</th>
+              <th>Product</th>
+              <th>Route</th>
+              <th>Value</th>
+              <th>Margin %</th>
+              <th>Risk</th>
+              <th>Status</th>
+              <th>ETA</th>
+            </tr>
+          </thead>
+          <tbody id="deal-body"></tbody>
+        </table>
+      </main>
+
+      <aside class="panel right-rail">
+        <h2>Live FX</h2>
+        <ul id="fx-list"></ul>
+
+        <h2>Risk Watch</h2>
+        <ul id="risk-feed"></ul>
+
+        <h2>Sales Forecast (Next 3 Months)</h2>
+        <div id="forecast-bars" class="bars"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
