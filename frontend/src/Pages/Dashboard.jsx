@@ -2,7 +2,7 @@ import { useState } from "react";
 import StatCard from "../components/StatCard";
 import DealTable from "../components/DealTable";
 import RightPanel from "../components/RightPanel";
-import FXMonitor from "./FXMonitor";
+import FXMonitor from "../components/FXMonitor";
 
 const TABS = ["Deal Table", "Risk Analytics", "FX Monitor", "Price Forecast"];
 
@@ -24,7 +24,6 @@ export default function Dashboard({ newDeal, isDark }) {
   const [completedToast, setCompletedToast] = useState(null);
   const [showCompleted, setShowCompleted] = useState(false);
 
-  // Append incoming deal from modal
   const allDeals = newDeal
     ? [...deals, {
         id: `TIQ-${String(deals.length + 19).padStart(4, "0")}`,
@@ -65,8 +64,7 @@ export default function Dashboard({ newDeal, isDark }) {
 
   return (
     <div className={`flex h-full transition-colors duration-300 ${bg}`}>
-      <div className="flex-1 min-w-0 overflow-y-auto">
-        {/* Stats Bar */}
+      <div className="flex-1 min-w-0 overflow-y-auto">  
         <div className={`flex border-b transition-colors duration-300 ${statsBg}`}>
           <div className={`flex-shrink-0 px-5 py-3 border-r ${isDark ? "border-[#1e2a3a]" : "border-[#dde3f0]"}`}>
             <p className={`text-[9px] tracking-[0.18em] font-mono uppercase mb-1 ${isDark ? "text-[#4a5a6a]" : "text-[#aab0c0]"}`}>ACTIVE DEALS</p>
@@ -81,7 +79,6 @@ export default function Dashboard({ newDeal, isDark }) {
           <StatCard label="Margin Avg" value="18.4%" sub="↑ 1.2%" isDark={isDark} />
         </div>
 
-        {/* Tabs + Completed toggle */}
         <div className={`flex items-center justify-between border-b px-4 transition-colors duration-300 ${tabBg}`}>
           <div className="flex">
             {TABS.map((t) => (
@@ -106,7 +103,6 @@ export default function Dashboard({ newDeal, isDark }) {
           </button>
         </div>
 
-        {/* Content */}
         <div className={`min-h-full transition-colors duration-300 ${isDark ? "bg-[#0a0e1a]" : "bg-[#f8faff]"}`}>
           {tab === "Deal Table" && (
             <>
@@ -138,7 +134,6 @@ export default function Dashboard({ newDeal, isDark }) {
 
       <RightPanel isDark={isDark} />
 
-      {/* Deal Detail Drawer */}
       {selected && (
         <div className="fixed inset-0 z-50 flex justify-end">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSelected(null)} />
@@ -165,7 +160,6 @@ export default function Dashboard({ newDeal, isDark }) {
                 </div>
               ))}
 
-              {/* ML Box */}
               <div className={`rounded-lg p-4 mt-2 ${isDark ? "bg-[#0f1825] border border-[#1e3a2a]" : "bg-[#f0fdf4] border border-[#bbf7d0]"}`}>
                 <p className="text-[#00ff88] text-[10px] font-mono tracking-wider mb-2">ML RISK ANALYSIS</p>
                 <p className={`text-xs leading-relaxed ${isDark ? "text-[#5a6a7a]" : "text-[#5a8a6a]"}`}>
@@ -173,7 +167,6 @@ export default function Dashboard({ newDeal, isDark }) {
                 </p>
               </div>
 
-              {/* Complete Deal Button */}
               {!selected.completed && (
                 <button
                   onClick={() => handleCompleteDeal(selected)}
@@ -187,7 +180,6 @@ export default function Dashboard({ newDeal, isDark }) {
         </div>
       )}
 
-      {/* Completion Toast */}
       {completedToast && (
         <div className="fixed bottom-6 right-6 z-50 animate-bounce-once">
           <div className="bg-[#0f1825] border border-[#00ff88]/40 rounded-xl px-5 py-4 shadow-[0_0_30px_rgba(0,255,136,0.2)] flex items-start gap-3 max-w-xs">
