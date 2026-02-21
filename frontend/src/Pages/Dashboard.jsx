@@ -2,6 +2,7 @@ import { useState } from "react";
 import StatCard from "../components/StatCard";
 import DealTable from "../components/DealTable";
 import RightPanel from "../components/RightPanel";
+import FXMonitor from "./FXMonitor";
 
 const TABS = ["Deal Table", "Risk Analytics", "FX Monitor", "Price Forecast"];
 
@@ -121,11 +122,15 @@ export default function Dashboard({ newDeal, isDark }) {
               )}
             </>
           )}
-          {tab !== "Deal Table" && (
+          {tab === "FX Monitor" && <FXMonitor isDark={isDark} />}
+          {tab === "Risk Analytics" && (
             <div className="flex items-center justify-center h-64">
-              <p className={`font-mono text-sm ${isDark ? "text-[#3a4a5a]" : "text-[#aab0c0]"}`}>
-                {tab} — Connect ML/API endpoint here
-              </p>
+              <p className={`font-mono text-sm ${isDark ? "text-[#3a4a5a]" : "text-[#aab0c0]"}`}>Risk Analytics — Connect ML model endpoint</p>
+            </div>
+          )}
+          {tab === "Price Forecast" && (
+            <div className="flex items-center justify-center h-64">
+              <p className={`font-mono text-sm ${isDark ? "text-[#3a4a5a]" : "text-[#aab0c0]"}`}>Price Forecast — Connect ML model endpoint</p>
             </div>
           )}
         </div>
