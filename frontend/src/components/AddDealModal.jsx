@@ -24,7 +24,7 @@ export default function AddDealModal({ isOpen, onClose, onSubmit }) {
   const handleSubmit = async () => {
     if (!form.product || !form.origin || !form.destination || !form.value) return;
     setLoading(true);
-    // Simulate ML scoring delay
+
     await new Promise((r) => setTimeout(r, 900));
     const mlRiskScore = Math.floor(Math.random() * 60) + 20; // Placeholder for ML model
     onSubmit({ ...form, riskScore: mlRiskScore });
@@ -49,24 +49,19 @@ export default function AddDealModal({ isOpen, onClose, onSubmit }) {
           <button onClick={onClose} className="text-[#4a5a6a] hover:text-white text-lg transition-colors">✕</button>
         </div>
 
-        {/* Body */}
         <div className="px-6 py-5 space-y-4">
-          {/* Product */}
           <Field label="PRODUCT / CATEGORY" name="product" value={form.product} onChange={handleChange} placeholder="e.g. Electronics - PCBs" />
 
-          {/* Origin → Destination */}
           <div className="grid grid-cols-2 gap-3">
             <Field label="ORIGIN CITY" name="origin" value={form.origin} onChange={handleChange} placeholder="e.g. Shenzhen" />
             <Field label="DESTINATION CITY" name="destination" value={form.destination} onChange={handleChange} placeholder="e.g. Mumbai" />
           </div>
 
-          {/* Value + Margin */}
           <div className="grid grid-cols-2 gap-3">
             <Field label="DEAL VALUE (USD)" name="value" value={form.value} onChange={handleChange} placeholder="e.g. 320000" type="number" />
             <Field label="MARGIN %" name="margin" value={form.margin} onChange={handleChange} placeholder="e.g. 14.2" type="number" />
           </div>
 
-          {/* Status */}
           <div>
             <label className="block text-[#4a5a6a] text-[10px] tracking-[0.15em] font-mono mb-1.5">STATUS</label>
             <div className="flex gap-2 flex-wrap">
@@ -86,7 +81,6 @@ export default function AddDealModal({ isOpen, onClose, onSubmit }) {
             </div>
           </div>
 
-          {/* ML Note */}
           <div className="bg-[#0f1825] border border-[#1e3a2a] rounded-lg p-3 flex items-start gap-3">
             <span className="text-[#00ff88] text-sm mt-0.5">⚡</span>
             <div>

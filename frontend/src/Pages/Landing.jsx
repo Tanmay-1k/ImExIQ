@@ -21,7 +21,6 @@ export default function Landing({ onGetStarted, isDark }) {
   
     return (
       <div className={`min-h-screen ${bg} ${text} transition-colors duration-300`}>
-        {/* Nav */}
         <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 h-14 border-b ${isDark ? "border-[#1e2a3a] bg-[#0a0e1a]/90" : "border-[#dde3f0] bg-white/90"} backdrop-blur-sm`}>
           <span className="font-black text-xl tracking-tight">
             Trade<span style={{ color: accent }}>IQ</span>
@@ -34,8 +33,7 @@ export default function Landing({ onGetStarted, isDark }) {
             Login →
           </button>
         </nav>
-  
-        {/* Hero */}
+
         <div className="pt-40 pb-20 px-8 text-center max-w-4xl mx-auto">
           <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-mono mb-8 border ${isDark ? "border-[#1e3a2a] bg-[#0f1825] text-[#00ff88]" : "border-[#c0e8d0] bg-[#f0fdf4] text-[#16a34a]"}`}>
             <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse inline-block" />
@@ -65,7 +63,6 @@ export default function Landing({ onGetStarted, isDark }) {
           </div>
         </div>
   
-        {/* Stats Bar */}
         <div className={`max-w-3xl mx-4 md:mx-8 lg:mx-auto mb-20 grid grid-cols-4 divide-x 
   ${isDark 
     ? "divide-[#1e2a3a] border border-[#1e2a3a] bg-[#0f1825]" 
@@ -79,7 +76,6 @@ export default function Landing({ onGetStarted, isDark }) {
           ))}
         </div>
   
-        {/* Features */}
         <div className="max-w-4xl mx-auto px-8 mb-24">
           <h2 className="text-center text-2xl font-black mb-12">Everything your trade desk needs</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -93,7 +89,6 @@ export default function Landing({ onGetStarted, isDark }) {
           </div>
         </div>
   
-        {/* CTA Footer */}
         <div className={`border-t ${isDark ? "border-[#1e2a3a]" : "border-[#dde3f0]"} py-12 text-center`}>
           <p className={`text-sm ${sub} mb-4`}>Ready to bring intelligence to your trade ops?</p>
           <button

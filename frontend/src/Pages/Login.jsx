@@ -19,15 +19,13 @@ export default function Login({ onLogin, onBack, isDark }) {
     }
     setError("");
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800)); // simulate auth
+    await new Promise((r) => setTimeout(r, 800));
     setLoading(false);
-    // In production: call your auth API here
     onLogin({ name: "Rahul M.", email: form.email });
   };
 
   return (
     <div className={`min-h-screen ${bg} flex flex-col transition-colors duration-300`}>
-      {/* Top nav */}
       <nav className={`flex items-center justify-between px-8 h-14 border-b ${isDark ? "border-[#1e2a3a]" : "border-[#dde3f0]"}`}>
         <button onClick={onBack} className={`text-xs font-mono ${sub} hover:text-[#00e5ff] transition-colors`}>
           ← Back
@@ -38,10 +36,8 @@ export default function Login({ onLogin, onBack, isDark }) {
         <div className="w-16" />
       </nav>
 
-      {/* Form */}
       <div className="flex-1 flex items-center justify-center px-4">
         <div className={`w-full max-w-sm border rounded-2xl p-8 ${cardBg}`}>
-          {/* Header */}
           <div className="mb-8">
             <div className="w-10 h-10 rounded-xl bg-[#00e5ff]/10 border border-[#00e5ff]/20 flex items-center justify-center mb-4">
               <span className="text-[#00e5ff] text-lg">◈</span>
@@ -50,7 +46,6 @@ export default function Login({ onLogin, onBack, isDark }) {
             <p className={`text-xs mt-1 ${sub}`}>Sign in to your TradeIQ account</p>
           </div>
 
-          {/* Fields */}
           <div className="space-y-4 mb-6">
             <div>
               <label className={`block text-[10px] tracking-[0.15em] font-mono mb-1.5 ${labelColor}`}>EMAIL</label>
@@ -80,7 +75,6 @@ export default function Login({ onLogin, onBack, isDark }) {
             <p className="text-[#ff5555] text-xs mb-4 font-mono">{error}</p>
           )}
 
-          {/* Demo hint */}
           <div className={`text-[10px] font-mono mb-4 px-3 py-2 rounded-lg ${isDark ? "bg-[#080c17] text-[#3a4a5a]" : "bg-[#f0f4ff] text-[#8a9ab0]"}`}>
             Demo: any email + password works
           </div>
